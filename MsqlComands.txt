@@ -43,7 +43,7 @@ laurea (286)
 
     select count(*)
     from `teachers`
-    where `phone` is not null
+    where `phone` is null
 
 /////// BONUS /////// BONUS /////// BONUS /////// BONUS ///////
 
