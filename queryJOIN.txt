@@ -53,7 +53,7 @@
     on `teachers`.`id` = `course_teacher`.`teacher_id`
     inner join `courses`
     on `course_teacher`.`course_id` = `courses`.`id`
-    inner join `degrees`
+    inner join        `degrees`
     on `degrees`.`id` = `courses`.`degree_id`
     inner join `departments`
     on `departments`.`id` = `degrees`.`department_id`
