@@ -12,7 +12,11 @@
 
 3, Selezionare tutti gli studenti che hanno più di 30 anni
 
-    NON E' DA FARE
+    select *
+    timestampdiff(year, `date_of_birth`, curdate()) as `age`
+    from `students`
+    where timestampdiff(year, `date_of_birth`, curdate()) > 30
+    order by `age`
 
 4. Selezionare tutti i corsi del primo semestre del primo anno di un qualsiasi corso di
 laurea (286)
@@ -45,11 +49,29 @@ laurea (286)
     from `teachers`
     where `phone` is null
 
+9. Inserire nella tabella degli studenti un nuovo record con i propri dati (per il campo degree_id, inserire un valore casuale)
+
+    insert into `students` (`degree_id`,`name`, `surname`, `date_of_birth`, `fiscal_code`, `enrolment_date`, `registration_number`, `email`)
+    values (100, "yufei", "chang", "1995-06-01", "codice95fiscale", curdate(), "numero06registrazione", "email@gmail.com")
+
+10. Cambiare il numero dell’ufficio del professor Pietro Rizzo in 126
+
+    update `teachers`
+    set `office_address` = 126
+    where `id` = 58
+
+11. Eliminare dalla tabella studenti il record creato precedentemente al punto 9
+
+    delete
+    from `students`
+    where `id` = 5002
+
+
 /////// BONUS /////// BONUS /////// BONUS /////// BONUS ///////
 
 1. Contare quanti iscritti ci sono stati ogni anno
 
-    select count(*), year(`enrolment_date`)
+     select count(*) as `numero_iscritti`, year(`enrolment_date`) as `anno_iscrizione`
     from `students`
     group by year(`enrolment_date`)
 
