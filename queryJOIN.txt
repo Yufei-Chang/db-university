@@ -62,7 +62,7 @@
 
 7. BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per superare ciascuno dei suoi esami
 
-    select count(`exam_student`.`vote`) as `esami_sostenuti`, `students`.`id`, `students`.`name`, `students`.`surname`
+    select count(`exam_student`.`vote`) as `esami_sostenuti`, `students`.`id`, `students`.`name`, `students`.`surname`, `courses`.`name` as `materia`, `degrees`.`name` as `corso_laurea`
     from `degrees`
     inner join `courses`
     on `courses`.`degree_id` = `degrees`.`id`
@@ -73,4 +73,4 @@
     inner join `students`
     on `students`.`id` = `exam_student`.`student_id`
     where `exam_student`.`vote` < 18
-    group by `students`.`id`
+    group by `students`.`id`, `courses`.`id`, `degrees`.`id`
